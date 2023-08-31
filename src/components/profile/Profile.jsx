@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import me from "../../assets/skj.jpg";
 import { Link } from "react-router-dom";
-import { MdDashboard } from "react-icons/md";
 
 const Profile = () => {
   const options = {
@@ -22,7 +21,7 @@ const Profile = () => {
         <motion.h5 {...options} transition={{ delay: 0.3 }}>
           Nelson
         </motion.h5>
-      
+
         <motion.div
           initial={{
             x: "-100vw",

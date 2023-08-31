@@ -1,52 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import burger1 from "../../assets/burger1.png";
-import burger2 from "../../assets/burger2.png";
-// import burger3 here
+import { burgers } from "../../data";
 
-const CartItem = ({ value, title, img, increment, decrement }) => (
-  <div className="cartItem">
-    <div>
-      <h4>{title}</h4>
-      <img src={img} alt="Item" />
-    </div>
 
-    <div>
-      <button onClick={decrement}>-</button>
-      <input type="number" readOnly value={value} />
-      <button onClick={increment}>+</button>
+const CartItem = ({ value, title, img }) => {
+  const [num, setNum] = useState(value);
+  const decrement = () => num > 0 ? setNum(num - 1) : setNum(0);
+  const increment = () => setNum(num + 1);
+
+  return (
+    <div className="cartItem">
+      <div>
+        <h4>{title}</h4>
+        <img src={img} alt={title} />
+      </div>
+
+      <div>
+        <button onClick={decrement}>-</button>
+        <input type="number" readOnly value={num} />
+        <button onClick={increment}>+</button>
+      </div>
     </div>
-  </div>
-);
+  )
+};
 
 const Cart = () => {
-  const increment = (item) => {};
-
-  const decrement = (item) => {};
-
   return (
     <section className="cart">
       <main>
-        <CartItem
-          title={"Cheese Burger"}
-          img={burger1}
-          value={0}
-          increment={() => increment(1)}
-
-        // Add the function for decrementing the order by 1 
-       
-        />
-        <CartItem
-          title={"Veg Cheese Burger"}
-          img={burger2}
-          value={0}
-          increment={() => increment(2)}
-        // Add the function for decrementing the order by 2
-       
-        />
-
-        {/* Fill up the code for Cheese Burger similarly */}
-       
+        {burgers.map((item) => <CartItem
+          key={item.itemNum}
+          title={item.title}
+          img={item.img}
+          value={item.value}
+        />)}
 
         <article>
           <div>
@@ -72,4 +59,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Cart; 
