@@ -10,13 +10,13 @@ const Menu = () => {
             <h1>MENU</h1>
 
             <div>
-                {burgers.map((item) => <MenuCard
-                    key={item.itemNum}
-                    itemNum={item.itemNum}
-                    burgerSrc={item.img}
-                    price={item.price}
-                    title={item.title}
-                    delay={item.delay}
+                {burgers.map(({itemNum, img, price, title, delay}) => <MenuCard
+                    key={itemNum}
+                    itemNum={itemNum}
+                    burgerSrc={img}
+                    price={price}
+                    title={title}
+                    delay={delay}
                     handler={addToCartHandler}
                 />
                 )}

@@ -28,11 +28,11 @@ const Cart = () => {
   return (
     <section className="cart">
       <main>
-        {burgers.map((item) => <CartItem
-          key={item.itemNum}
-          title={item.title}
-          img={item.img}
-          value={item.value}
+        {burgers.map(({itemNum, title, img, value}) => <CartItem
+          key={itemNum}
+          title={title}
+          img={img}
+          value={value}
         />)}
 
         <article>
